@@ -63,10 +63,7 @@
 
 - (NSDictionary *)numberOfPiecesForPuzzle
 {
-    if (mode == jigSawAdultMode)
-        return @{@"H":@12,@"V":@8};
-    else
-        return @{@"H":@3,@"V":@2};
+    return @{@"H":self.numberHorizontal,@"V":self.numberVertical};
 }
 
 - (BOOL)showHintImage

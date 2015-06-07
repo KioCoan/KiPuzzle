@@ -20,6 +20,8 @@ typedef enum : NSUInteger {
 @property (weak, nonatomic) IBOutlet UIButton *btnClose;
 
 @property(strong,nonatomic)NSString* currentImage;
+@property(strong,nonatomic)NSString* numberHorizontal;
+@property(strong,nonatomic)NSString* numberVertical;
 
 -(void)fixCloseButton;
 @end

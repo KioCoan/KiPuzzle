@@ -19,6 +19,10 @@ static NSString* const kPuzzleImageFormatSuffix = @".png";
 
 @property(strong,nonatomic)NSArray* imageFiles;
 @property(weak,nonatomic)IBOutlet UITableView* imageTableView;
+@property(weak,nonatomic)IBOutlet UISlider* horizontalSlider;
+@property(weak,nonatomic)IBOutlet UISlider* verticalSlider;
+@property(weak,nonatomic)IBOutlet UILabel* horzontalLabel;
+@property(weak,nonatomic)IBOutlet UILabel* verticalLabel;
 
 @end
 
@@ -35,6 +39,8 @@ static NSString* const kPuzzleImageFormatSuffix = @".png";
     
     NSIndexPath* path = [NSIndexPath indexPathForItem:0 inSection:0];
     [self.imageTableView selectRowAtIndexPath:path animated:YES scrollPosition:UITableViewScrollPositionTop];
+    
+    [self sliderMoved:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -100,6 +106,8 @@ static NSString* const kPuzzleImageFormatSuffix = @".png";
     self.imageFiles = [NSArray arrayWithArray:tempArray];
 }
 
+#pragma mark - Navigation
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:kSegueIdShowPuzzle]) {
         NSIndexPath* path = [self.imageTableView indexPathForSelectedRow];
@@ -107,7 +115,22 @@ static NSString* const kPuzzleImageFormatSuffix = @".png";
         NSString* imageString = self.imageFiles[path.row];
         JigsawVC* destination = segue.destinationViewController;
         destination.currentImage = imageString;
+        NSInteger horizontal = self.horizontalSlider.value;
+        destination.numberHorizontal = [NSString stringWithFormat:@"%ld", horizontal];
+        NSInteger vertical = self.verticalSlider.value;
+        
+        destination.numberVertical = [NSString stringWithFormat:@"%ld", vertical];
     }
+}
+
+#pragma mark - Actions
+
+- (IBAction)sliderMoved:(id)sender {
+    NSUInteger horizontal = self.horizontalSlider.value;
+    self.horzontalLabel.text = [NSString stringWithFormat:@"H: %ld",horizontal];
+    
+    NSUInteger vertical = self.verticalSlider.value;
+    self.verticalLabel.text = [NSString stringWithFormat:@"V: %ld",vertical];
 }
 
 @end

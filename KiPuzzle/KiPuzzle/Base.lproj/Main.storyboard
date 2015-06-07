@@ -58,20 +58,64 @@
                                     <outlet property="delegate" destination="IlA-kY-nvC" id="Uah-F0-EXI"/>
                                 </connections>
                             </tableView>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" minValue="3" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="bD2-a0-qGg">
+                                <rect key="frame" x="430" y="550" width="156" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="152" id="Hds-mC-ehQ"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="sliderMoved:" destination="IlA-kY-nvC" eventType="valueChanged" id="XBu-BC-unc"/>
+                                </connections>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" minValue="3" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="nIv-eW-hm4">
+                                <rect key="frame" x="14" y="550" width="150" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="146" id="l4g-QU-QLa"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="sliderMoved:" destination="IlA-kY-nvC" eventType="valueChanged" id="aOr-lH-xYy"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GDA-V5-VvQ">
+                                <rect key="frame" x="170" y="554" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XGM-g2-rYa">
+                                <rect key="frame" x="382" y="554" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="cAR-y6-Rb9" firstAttribute="top" secondItem="Rg1-Gn-Nzd" secondAttribute="bottom" constant="8" id="4ha-rh-EYt"/>
+                            <constraint firstItem="NA3-H9-PmT" firstAttribute="top" secondItem="nIv-eW-hm4" secondAttribute="bottom" constant="20" id="8NP-UD-z4e"/>
                             <constraint firstItem="NA3-H9-PmT" firstAttribute="top" secondItem="cAR-y6-Rb9" secondAttribute="bottom" constant="20" id="Dhb-qT-hSl"/>
+                            <constraint firstItem="nIv-eW-hm4" firstAttribute="leading" secondItem="QMR-x2-v8a" secondAttribute="leadingMargin" id="F1D-QA-OWk"/>
                             <constraint firstAttribute="centerX" secondItem="cAR-y6-Rb9" secondAttribute="centerX" id="KFg-FJ-1xf"/>
+                            <constraint firstItem="NA3-H9-PmT" firstAttribute="top" secondItem="bD2-a0-qGg" secondAttribute="bottom" constant="20" id="KlT-zR-Y6n"/>
+                            <constraint firstItem="bD2-a0-qGg" firstAttribute="trailing" secondItem="QMR-x2-v8a" secondAttribute="trailingMargin" id="MoZ-7J-o4I"/>
+                            <constraint firstItem="bD2-a0-qGg" firstAttribute="top" secondItem="Rg1-Gn-Nzd" secondAttribute="bottom" constant="8" id="PKm-J6-xyg"/>
                             <constraint firstItem="Rg1-Gn-Nzd" firstAttribute="trailing" secondItem="QMR-x2-v8a" secondAttribute="trailingMargin" id="Q4w-N0-dt2"/>
+                            <constraint firstItem="bD2-a0-qGg" firstAttribute="centerY" secondItem="XGM-g2-rYa" secondAttribute="centerY" id="TMI-b6-9fQ"/>
                             <constraint firstItem="Rg1-Gn-Nzd" firstAttribute="top" secondItem="Rd6-ue-nbH" secondAttribute="bottom" constant="8" id="cbd-Au-6NJ"/>
+                            <constraint firstItem="nIv-eW-hm4" firstAttribute="top" secondItem="Rg1-Gn-Nzd" secondAttribute="bottom" constant="8" id="dOa-aV-AwV"/>
+                            <constraint firstItem="bD2-a0-qGg" firstAttribute="leading" secondItem="XGM-g2-rYa" secondAttribute="trailing" constant="8" id="gym-ED-uUK"/>
+                            <constraint firstItem="nIv-eW-hm4" firstAttribute="centerY" secondItem="GDA-V5-VvQ" secondAttribute="centerY" id="gzo-3W-jjY"/>
+                            <constraint firstItem="GDA-V5-VvQ" firstAttribute="leading" secondItem="nIv-eW-hm4" secondAttribute="trailing" constant="8" id="myQ-eV-u5G"/>
                             <constraint firstItem="Rg1-Gn-Nzd" firstAttribute="leading" secondItem="QMR-x2-v8a" secondAttribute="leadingMargin" id="t3L-TL-4ne"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="RTM-gh-CPZ"/>
                     <connections>
+                        <outlet property="horizontalSlider" destination="nIv-eW-hm4" id="Py8-fo-quA"/>
+                        <outlet property="horzontalLabel" destination="GDA-V5-VvQ" id="16g-YA-eAt"/>
                         <outlet property="imageTableView" destination="Rg1-Gn-Nzd" id="xSb-8j-7GG"/>
+                        <outlet property="verticalLabel" destination="XGM-g2-rYa" id="3uN-ev-ujT"/>
+                        <outlet property="verticalSlider" destination="bD2-a0-qGg" id="bXF-kU-WHp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="02z-pp-vNE" userLabel="First Responder" sceneMemberID="firstResponder"/>
