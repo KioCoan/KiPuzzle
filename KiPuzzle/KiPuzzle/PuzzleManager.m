@@ -7,17 +7,42 @@
 //
 #import <AudioToolbox/AudioToolbox.h>
 #import <QuartzCore/QuartzCore.h>
+
+#import "SystemUtility.h"
+
 #import "PuzzleManager.h"
 #import "PuzzlePieceView.h"
 #import "JigsawVC.h"
 
-@interface PuzzleManager() <UIGestureRecognizerDelegate, PuzzlePieceViewDelegate>{
-    SystemSoundID pieceSound, winSound;
-    UIImageView* bg, *loadingImage;
-    int remainingPieces;
-    NSInteger cubeHeightValue, cubeWidthValue, pieceHCount, pieceVCount, deepnessH, deepnessV, touchedImgViewTag;
-    CGFloat lastScale, lastRotation, firstX, firstY;
-    NSMutableArray* piecesTypeValue, *piecesRotationValues, *piecesCoordinateRect, *piecesBezierPaths, *piecesBezierPathsWithouHoles, *allPiecesArray;
+@interface PuzzleManager() <UIGestureRecognizerDelegate, PuzzlePieceViewDelegate> {
+    SystemSoundID pieceSound;
+    SystemSoundID winSound;
+    
+    UIImageView* bg;
+    UIImageView* loadingImage;
+    
+    NSInteger remainingPieces;
+    
+    NSInteger cubeHeightValue;
+    NSInteger cubeWidthValue;
+    NSInteger pieceHCount;
+    NSInteger pieceVCount;
+    NSInteger deepnessH;
+    NSInteger deepnessV;
+    NSInteger touchedImgViewTag;
+    
+    CGFloat lastScale;
+    CGFloat lastRotation;
+    CGFloat firstX;
+    CGFloat firstY;
+    
+    NSMutableArray* piecesTypeValue;
+    NSMutableArray* piecesRotationValues;
+    NSMutableArray* piecesCoordinateRect;
+    NSMutableArray* piecesBezierPaths;
+    NSMutableArray* piecesBezierPathsWithouHoles;
+    NSMutableArray* allPiecesArray;
+    
     UIImage* originalImage;
     UIView* puzzleBoard;
 }
@@ -27,7 +52,7 @@
 
 @synthesize delegate;
 
--(id)initWithParentVC:(UIViewController *)parentVC{
+- (id)initWithParentVC:(UIViewController *)parentVC{
     self = [super init];
     _parentVC = parentVC;
     return self;
@@ -38,7 +63,7 @@
     pieceHCount = [[delegate numberOfPiecesForPuzzle][@"H"] integerValue];
     pieceVCount = [[delegate numberOfPiecesForPuzzle][@"V"] integerValue];
     NSArray* images = [delegate imagesForPuzzle];
-    int selectedPuzzle = arc4random_uniform(images.count);
+    int selectedPuzzle = arc4random_uniform((unsigned int)images.count);
     originalImage = [images objectAtIndex:selectedPuzzle];
     cubeHeightValue = originalImage.size.height / pieceVCount;
     cubeWidthValue = originalImage.size.width / pieceHCount;
@@ -124,9 +149,9 @@
     piecesTypeValue = [NSMutableArray new];
     piecesCoordinateRect = [NSMutableArray new];
     piecesRotationValues = [NSMutableArray new];
-    int mSide1 = 0, mSide2 = 0, mSide3 = 0, mSide4 = 0, mCounter = 0, mCubeWidth = 0, mCubeHeight = 0, mXPoint = 0, mYPoint = 0;
-    for(int i = 0; i < pieceVCount; i++){
-        for (int j = 0; j < pieceHCount; j++) {
+    NSInteger mSide1 = 0, mSide2 = 0, mSide3 = 0, mSide4 = 0, mCounter = 0, mCubeWidth = 0, mCubeHeight = 0, mXPoint = 0, mYPoint = 0;
+    for(NSInteger i = 0; i < pieceVCount; i++){
+        for (NSInteger j = 0; j < pieceHCount; j++) {
             if(j != 0)
             {
                 mSide1 = ([[[piecesTypeValue objectAtIndex:mCounter-1] objectAtIndex:2] intValue] == 1)?-1:1;
@@ -157,10 +182,10 @@
             if (mSide4 == 1)
                 mCubeHeight -= deepnessH;
             [piecesTypeValue addObject:[NSArray arrayWithObjects:
-                                         [NSString stringWithFormat:@"%i",mSide1],
-                                         [NSString stringWithFormat:@"%i",mSide2],
-                                         [NSString stringWithFormat:@"%i",mSide3],
-                                         [NSString stringWithFormat:@"%i",mSide4],
+                                         [NSString stringWithFormat:@"%ld",mSide1],
+                                         [NSString stringWithFormat:@"%ld",mSide2],
+                                         [NSString stringWithFormat:@"%ld",mSide3],
+                                         [NSString stringWithFormat:@"%ld",mSide4],
                                          nil]];
             mXPoint = MAX(mCubeWidth, MIN(arc4random() % MAX(1,(int)(_parentVC.view.frame.size.width - mCubeWidth*2)) + mCubeWidth, _parentVC.view.frame.size.width - mCubeWidth*2));
             mYPoint = MAX(mCubeHeight, MIN(arc4random() % MAX(1,(int)(_parentVC.view.frame.size.height - mCubeHeight*2)) + mCubeHeight, _parentVC.view.frame.size.height - mCubeHeight*2));

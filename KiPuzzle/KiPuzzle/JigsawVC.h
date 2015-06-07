@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Encripta. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
+
 typedef enum : NSUInteger {
    jigsawKidMode,
    jigSawAdultMode
