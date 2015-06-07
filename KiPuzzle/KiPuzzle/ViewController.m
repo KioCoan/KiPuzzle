@@ -56,9 +56,22 @@ static NSString* const kPuzzleImageFormatSuffix = @".png";
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:kImageCellIdentifier];
     
     NSString* imageName = self.imageFiles[indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@",imageName];
+    NSString* displayName = [self displayStringFromImageName:imageName];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@",displayName];
     
     return cell;
+}
+
+- (NSString*)displayStringFromImageName:(NSString*)imageName {
+    NSUInteger stringLength = [imageName length];
+    NSUInteger prefixLength = [kPuzzleImagePrefix length];
+    NSUInteger suffixLength = [kPuzzleImageFormatSuffix length];
+    NSUInteger displayLength = stringLength - prefixLength - suffixLength;
+    NSRange range = NSMakeRange(prefixLength, displayLength);
+    NSString* displayString = [imageName substringWithRange:range];
+    displayString = [displayString capitalizedString];
+    
+    return displayString;
 }
 
 #pragma mark - Data
