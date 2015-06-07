@@ -19,5 +19,7 @@ typedef enum : NSUInteger {
 @property int mode;
 @property (weak, nonatomic) IBOutlet UIButton *btnClose;
 
+@property(strong,nonatomic)NSString* currentImage;
+
 -(void)fixCloseButton;
 @end

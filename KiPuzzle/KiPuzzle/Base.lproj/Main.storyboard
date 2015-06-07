@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="blr-YR-nJ3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -23,7 +24,7 @@
         <!--View Controller-->
         <scene sceneID="nwR-PV-xGm">
             <objects>
-                <viewController id="IlA-kY-nvC" sceneMemberID="viewController">
+                <viewController id="IlA-kY-nvC" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Rd6-ue-nbH"/>
                         <viewControllerLayoutGuide type="bottom" id="NA3-H9-PmT"/>
@@ -38,17 +39,40 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="KsR-ie-Ga5" kind="show" id="VT6-mY-f2u"/>
+                                    <segue destination="KsR-ie-Ga5" kind="show" identifier="ShowPuzzleSegue" id="VT6-mY-f2u"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Rg1-Gn-Nzd">
+                                <rect key="frame" x="16" y="72" width="568" height="470"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="imageCell" id="Y6t-tN-rfg">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Y6t-tN-rfg" id="W4c-rb-Qcl">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="IlA-kY-nvC" id="42u-PM-N8X"/>
+                                    <outlet property="delegate" destination="IlA-kY-nvC" id="Uah-F0-EXI"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="cAR-y6-Rb9" firstAttribute="top" secondItem="Rg1-Gn-Nzd" secondAttribute="bottom" constant="8" id="4ha-rh-EYt"/>
                             <constraint firstItem="NA3-H9-PmT" firstAttribute="top" secondItem="cAR-y6-Rb9" secondAttribute="bottom" constant="20" id="Dhb-qT-hSl"/>
                             <constraint firstAttribute="centerX" secondItem="cAR-y6-Rb9" secondAttribute="centerX" id="KFg-FJ-1xf"/>
+                            <constraint firstItem="Rg1-Gn-Nzd" firstAttribute="trailing" secondItem="QMR-x2-v8a" secondAttribute="trailingMargin" id="Q4w-N0-dt2"/>
+                            <constraint firstItem="Rg1-Gn-Nzd" firstAttribute="top" secondItem="Rd6-ue-nbH" secondAttribute="bottom" constant="8" id="cbd-Au-6NJ"/>
+                            <constraint firstItem="Rg1-Gn-Nzd" firstAttribute="leading" secondItem="QMR-x2-v8a" secondAttribute="leadingMargin" id="t3L-TL-4ne"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="RTM-gh-CPZ"/>
+                    <connections>
+                        <outlet property="imageTableView" destination="Rg1-Gn-Nzd" id="xSb-8j-7GG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="02z-pp-vNE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

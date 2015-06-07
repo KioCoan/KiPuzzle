@@ -13,10 +13,13 @@
 @interface JigsawVC () <PuzzleManagerDelegate>{
     PuzzleManager* puzzleManager;
 }
+
 - (IBAction)closeGame:(id)sender;
+
 @end
 
 @implementation JigsawVC
+
 @synthesize mode;
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -27,7 +30,8 @@
     _btnClose.layer.masksToBounds = YES;
     puzzleManager = [[PuzzleManager alloc]initWithParentVC:self];
     puzzleManager.delegate = self;
-    [puzzleManager prepareForStart];
+    UIImage* puzzleImage = [UIImage imageNamed:self.currentImage];
+    [puzzleManager prepareForStart:puzzleImage];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -47,7 +51,7 @@
     puzzleManager = nil;
 }
 
--(void)fixCloseButton{
+- (void)fixCloseButton{
     [self.view bringSubviewToFront:_btnClose];
 }
 
@@ -55,12 +59,7 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-//PuzzleManagerDelegate
-
-- (NSArray *)imagesForPuzzle
-{
-    return @[[UIImage imageNamed:@"puzzle3.png"],[UIImage imageNamed:@"jigsaw1"]];
-}
+#pragma mark - PuzzleManagerDelegate
 
 - (NSDictionary *)numberOfPiecesForPuzzle
 {

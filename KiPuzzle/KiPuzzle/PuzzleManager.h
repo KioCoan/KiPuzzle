@@ -12,7 +12,6 @@
 
 @required
 - (NSDictionary*) numberOfPiecesForPuzzle;
-- (NSArray*) imagesForPuzzle;
 - (BOOL) showHintImage;
 @end
 
@@ -24,7 +23,7 @@
 
 -(id)initWithParentVC:(UIViewController*)parentVC;
 
--(void)prepareForStart;
+-(void)prepareForStart:(UIImage*)image;
 -(void)start;
 
 @end

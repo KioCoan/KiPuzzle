@@ -58,13 +58,11 @@
     return self;
 }
 
-- (void)prepareForStart
+- (void)prepareForStart:(UIImage*)image
 {
     pieceHCount = [[delegate numberOfPiecesForPuzzle][@"H"] integerValue];
     pieceVCount = [[delegate numberOfPiecesForPuzzle][@"V"] integerValue];
-    NSArray* images = [delegate imagesForPuzzle];
-    int selectedPuzzle = arc4random_uniform((unsigned int)images.count);
-    originalImage = [images objectAtIndex:selectedPuzzle];
+    originalImage = image;
     cubeHeightValue = originalImage.size.height / pieceVCount;
     cubeWidthValue = originalImage.size.width / pieceHCount;
     deepnessH = -(cubeHeightValue / 4);
