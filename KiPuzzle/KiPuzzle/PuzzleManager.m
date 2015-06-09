@@ -139,7 +139,7 @@
 
 -(void)closeGame
 {
-    [_parentVC dismissViewControllerAnimated:YES completion:nil];
+    [[_parentVC navigationController] popViewControllerAnimated:YES];
 }
 
 -(void)setUpPiecesCoordinatesTypesAndRotationValues

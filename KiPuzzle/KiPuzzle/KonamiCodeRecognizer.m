@@ -29,9 +29,6 @@
     NSLog(@"Began");
     UITouch *touch = [touches anyObject];
     self.startPoint = [touch locationInView:self.view];
-    //
-    //if ([touch locationInView:self.view].x > CGRectGetMidX(self.view.bounds)) self.state = UIGestureRecognizerStateFailed;
-    //else if ([touch locationInView:self.view].y > CGRectGetMidY(self.view.bounds)) self.state = UIGestureRecognizerStateFailed;
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
@@ -61,26 +58,18 @@
             [self setState:UIGestureRecognizerStateEnded];
         }
     }
-   // if ([touch locationInView:self.view].y > CGRectGetMidY(self.view.bounds)) self.state = UIGestureRecognizerStateFailed;
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     NSLog(@"Ended");
     [self reset];
-    //UITouch *touch = [touches anyObject];
-    //if ([touch locationInView:self.view].x < CGRectGetMidX(self.view.bounds)) self.state = UIGestureRecognizerStateFailed;
-    //else if ([touch locationInView:self.view].y > CGRectGetMidY(self.view.bounds)) self.state = UIGestureRecognizerStateFailed;
-    //else {
-    //    self.state = UIGestureRecognizerStateRecognized;
-    //}
+
 }
 
 -(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    NSLog(@"Cancelled");
     [self reset];
-    //    self.state = UIGestureRecognizerStateCancelled;
 }
 
 -(void)reset

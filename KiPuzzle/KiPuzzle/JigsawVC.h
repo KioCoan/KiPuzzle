@@ -19,7 +19,7 @@ typedef enum : NSUInteger {
 @property int mode;
 @property (weak, nonatomic) IBOutlet UIButton *btnClose;
 
-@property(strong,nonatomic)NSString* currentImage;
+@property(strong,nonatomic)NSDictionary* currentImage;
 @property(strong,nonatomic)NSString* numberHorizontal;
 @property(strong,nonatomic)NSString* numberVertical;
 

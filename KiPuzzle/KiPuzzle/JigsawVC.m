@@ -20,17 +20,18 @@
 
 @implementation JigsawVC
 
-@synthesize mode;
+@synthesize mode, btnClose, currentImage;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    _btnClose.layer.borderColor = [UIColor blackColor].CGColor;
-    _btnClose.layer.borderWidth = 1.0f;
-    _btnClose.layer.cornerRadius = _btnClose.frame.size.height / 2;
-    _btnClose.layer.masksToBounds = YES;
+    [[self navigationController] setNavigationBarHidden:YES animated:YES];
+    btnClose.layer.borderColor = [UIColor blackColor].CGColor;
+    btnClose.layer.borderWidth = 1.0f;
+    btnClose.layer.cornerRadius = btnClose.frame.size.height / 2;
+    btnClose.layer.masksToBounds = YES;
     puzzleManager = [[PuzzleManager alloc]initWithParentVC:self];
     puzzleManager.delegate = self;
-    UIImage* puzzleImage = [UIImage imageNamed:self.currentImage];
+    UIImage* puzzleImage = currentImage[@"Image"];
     [puzzleManager prepareForStart:puzzleImage];
 }
 
@@ -52,11 +53,11 @@
 }
 
 - (void)fixCloseButton{
-    [self.view bringSubviewToFront:_btnClose];
+    [self.view bringSubviewToFront:btnClose];
 }
 
 - (IBAction)closeGame:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [[self navigationController] popViewControllerAnimated:YES];
 }
 
 #pragma mark - PuzzleManagerDelegate
