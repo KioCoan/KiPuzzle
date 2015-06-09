@@ -9,11 +9,21 @@
 /* Begin PBXBuildFile section */
 		71AB22AB1B1FA39100FF52BF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AB22AA1B1FA39100FF52BF /* main.m */; };
 		71AB22AE1B1FA39100FF52BF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AB22AD1B1FA39100FF52BF /* AppDelegate.m */; };
-		71AB22B11B1FA39100FF52BF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AB22B01B1FA39100FF52BF /* ViewController.m */; };
+		71AB22B11B1FA39100FF52BF /* MainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AB22B01B1FA39100FF52BF /* MainVC.m */; };
 		71AB22B41B1FA39100FF52BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71AB22B21B1FA39100FF52BF /* Main.storyboard */; };
 		71AB22B61B1FA39100FF52BF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71AB22B51B1FA39100FF52BF /* Images.xcassets */; };
 		71AB22B91B1FA39100FF52BF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71AB22B71B1FA39100FF52BF /* LaunchScreen.xib */; };
 		71AB22C51B1FA39100FF52BF /* KiPuzzleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AB22C41B1FA39100FF52BF /* KiPuzzleTests.m */; };
+		71AB22EC1B27497F00FF52BF /* ImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AB22EB1B27497F00FF52BF /* ImageCell.m */; };
+		FE982B901B23BEC2003A7B5C /* JigsawVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FE982B891B23BEC2003A7B5C /* JigsawVC.m */; };
+		FE982B911B23BEC2003A7B5C /* KonamiCodeRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = FE982B8B1B23BEC2003A7B5C /* KonamiCodeRecognizer.m */; };
+		FE982B921B23BEC2003A7B5C /* PuzzleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FE982B8D1B23BEC2003A7B5C /* PuzzleManager.m */; };
+		FE982B931B23BEC2003A7B5C /* PuzzlePieceView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE982B8F1B23BEC2003A7B5C /* PuzzlePieceView.m */; };
+		FE982B9F1B23C281003A7B5C /* pieceGrab.caf in Resources */ = {isa = PBXBuildFile; fileRef = FE982B9A1B23C281003A7B5C /* pieceGrab.caf */; };
+		FE982BA01B23C281003A7B5C /* pieceRelease.caf in Resources */ = {isa = PBXBuildFile; fileRef = FE982B9B1B23C281003A7B5C /* pieceRelease.caf */; };
+		FE982BA11B23C281003A7B5C /* successPurchase.caf in Resources */ = {isa = PBXBuildFile; fileRef = FE982B9C1B23C281003A7B5C /* successPurchase.caf */; };
+		FE982BA41B23CA07003A7B5C /* PZIjigsaw1.png in Resources */ = {isa = PBXBuildFile; fileRef = FE982BA21B23CA07003A7B5C /* PZIjigsaw1.png */; };
+		FE982BA51B23CA07003A7B5C /* PZIpuzzle3.png in Resources */ = {isa = PBXBuildFile; fileRef = FE982BA31B23CA07003A7B5C /* PZIpuzzle3.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,14 +42,30 @@
 		71AB22AA1B1FA39100FF52BF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		71AB22AC1B1FA39100FF52BF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		71AB22AD1B1FA39100FF52BF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		71AB22AF1B1FA39100FF52BF /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		71AB22B01B1FA39100FF52BF /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		71AB22AF1B1FA39100FF52BF /* MainVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainVC.h; sourceTree = "<group>"; };
+		71AB22B01B1FA39100FF52BF /* MainVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainVC.m; sourceTree = "<group>"; };
 		71AB22B31B1FA39100FF52BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		71AB22B51B1FA39100FF52BF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		71AB22B51B1FA39100FF52BF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../Images.xcassets; sourceTree = "<group>"; };
 		71AB22B81B1FA39100FF52BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		71AB22BE1B1FA39100FF52BF /* KiPuzzleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KiPuzzleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		71AB22C31B1FA39100FF52BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71AB22C41B1FA39100FF52BF /* KiPuzzleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KiPuzzleTests.m; sourceTree = "<group>"; };
+		71AB22EA1B27497F00FF52BF /* ImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCell.h; sourceTree = "<group>"; };
+		71AB22EB1B27497F00FF52BF /* ImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCell.m; sourceTree = "<group>"; };
+		FE982B881B23BEC2003A7B5C /* JigsawVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JigsawVC.h; sourceTree = "<group>"; };
+		FE982B891B23BEC2003A7B5C /* JigsawVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JigsawVC.m; sourceTree = "<group>"; };
+		FE982B8A1B23BEC2003A7B5C /* KonamiCodeRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KonamiCodeRecognizer.h; sourceTree = "<group>"; };
+		FE982B8B1B23BEC2003A7B5C /* KonamiCodeRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KonamiCodeRecognizer.m; sourceTree = "<group>"; };
+		FE982B8C1B23BEC2003A7B5C /* PuzzleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PuzzleManager.h; sourceTree = "<group>"; };
+		FE982B8D1B23BEC2003A7B5C /* PuzzleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PuzzleManager.m; sourceTree = "<group>"; };
+		FE982B8E1B23BEC2003A7B5C /* PuzzlePieceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PuzzlePieceView.h; sourceTree = "<group>"; };
+		FE982B8F1B23BEC2003A7B5C /* PuzzlePieceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PuzzlePieceView.m; sourceTree = "<group>"; };
+		FE982B941B23C1C1003A7B5C /* SystemUtility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SystemUtility.h; sourceTree = "<group>"; };
+		FE982B9A1B23C281003A7B5C /* pieceGrab.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = pieceGrab.caf; sourceTree = "<group>"; };
+		FE982B9B1B23C281003A7B5C /* pieceRelease.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = pieceRelease.caf; sourceTree = "<group>"; };
+		FE982B9C1B23C281003A7B5C /* successPurchase.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = successPurchase.caf; sourceTree = "<group>"; };
+		FE982BA21B23CA07003A7B5C /* PZIjigsaw1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PZIjigsaw1.png; sourceTree = "<group>"; };
+		FE982BA31B23CA07003A7B5C /* PZIpuzzle3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PZIpuzzle3.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,13 +107,12 @@
 		71AB22A71B1FA39100FF52BF /* KiPuzzle */ = {
 			isa = PBXGroup;
 			children = (
-				71AB22AC1B1FA39100FF52BF /* AppDelegate.h */,
-				71AB22AD1B1FA39100FF52BF /* AppDelegate.m */,
-				71AB22AF1B1FA39100FF52BF /* ViewController.h */,
-				71AB22B01B1FA39100FF52BF /* ViewController.m */,
-				71AB22B21B1FA39100FF52BF /* Main.storyboard */,
-				71AB22B51B1FA39100FF52BF /* Images.xcassets */,
-				71AB22B71B1FA39100FF52BF /* LaunchScreen.xib */,
+				71AB22EA1B27497F00FF52BF /* ImageCell.h */,
+				71AB22EB1B27497F00FF52BF /* ImageCell.m */,
+				71AB22E81B2748E000FF52BF /* Delegates */,
+				71AB22E91B2748F500FF52BF /* PuzzleManager */,
+				71AB22E71B2748D300FF52BF /* ViewControllers */,
+				FE982B951B23C281003A7B5C /* resources */,
 				71AB22A81B1FA39100FF52BF /* Supporting Files */,
 			);
 			path = KiPuzzle;
@@ -96,6 +121,7 @@
 		71AB22A81B1FA39100FF52BF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FE982B941B23C1C1003A7B5C /* SystemUtility.h */,
 				71AB22A91B1FA39100FF52BF /* Info.plist */,
 				71AB22AA1B1FA39100FF52BF /* main.m */,
 			);
@@ -117,6 +143,70 @@
 				71AB22C31B1FA39100FF52BF /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		71AB22E71B2748D300FF52BF /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				FE982B881B23BEC2003A7B5C /* JigsawVC.h */,
+				FE982B891B23BEC2003A7B5C /* JigsawVC.m */,
+				71AB22AF1B1FA39100FF52BF /* MainVC.h */,
+				71AB22B01B1FA39100FF52BF /* MainVC.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		71AB22E81B2748E000FF52BF /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				71AB22AC1B1FA39100FF52BF /* AppDelegate.h */,
+				71AB22AD1B1FA39100FF52BF /* AppDelegate.m */,
+			);
+			name = Delegates;
+			sourceTree = "<group>";
+		};
+		71AB22E91B2748F500FF52BF /* PuzzleManager */ = {
+			isa = PBXGroup;
+			children = (
+				FE982B8A1B23BEC2003A7B5C /* KonamiCodeRecognizer.h */,
+				FE982B8B1B23BEC2003A7B5C /* KonamiCodeRecognizer.m */,
+				FE982B8C1B23BEC2003A7B5C /* PuzzleManager.h */,
+				FE982B8D1B23BEC2003A7B5C /* PuzzleManager.m */,
+				FE982B8E1B23BEC2003A7B5C /* PuzzlePieceView.h */,
+				FE982B8F1B23BEC2003A7B5C /* PuzzlePieceView.m */,
+			);
+			name = PuzzleManager;
+			sourceTree = "<group>";
+		};
+		FE982B951B23C281003A7B5C /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				71AB22B21B1FA39100FF52BF /* Main.storyboard */,
+				71AB22B51B1FA39100FF52BF /* Images.xcassets */,
+				71AB22B71B1FA39100FF52BF /* LaunchScreen.xib */,
+				FE982B961B23C281003A7B5C /* puzzlesImages */,
+				FE982B991B23C281003A7B5C /* sounds */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		FE982B961B23C281003A7B5C /* puzzlesImages */ = {
+			isa = PBXGroup;
+			children = (
+				FE982BA21B23CA07003A7B5C /* PZIjigsaw1.png */,
+				FE982BA31B23CA07003A7B5C /* PZIpuzzle3.png */,
+			);
+			path = puzzlesImages;
+			sourceTree = "<group>";
+		};
+		FE982B991B23C281003A7B5C /* sounds */ = {
+			isa = PBXGroup;
+			children = (
+				FE982B9A1B23C281003A7B5C /* pieceGrab.caf */,
+				FE982B9B1B23C281003A7B5C /* pieceRelease.caf */,
+				FE982B9C1B23C281003A7B5C /* successPurchase.caf */,
+			);
+			path = sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,9 +289,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE982BA01B23C281003A7B5C /* pieceRelease.caf in Resources */,
+				FE982BA51B23CA07003A7B5C /* PZIpuzzle3.png in Resources */,
 				71AB22B41B1FA39100FF52BF /* Main.storyboard in Resources */,
 				71AB22B91B1FA39100FF52BF /* LaunchScreen.xib in Resources */,
 				71AB22B61B1FA39100FF52BF /* Images.xcassets in Resources */,
+				FE982B9F1B23C281003A7B5C /* pieceGrab.caf in Resources */,
+				FE982BA41B23CA07003A7B5C /* PZIjigsaw1.png in Resources */,
+				FE982BA11B23C281003A7B5C /* successPurchase.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,9 +314,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71AB22B11B1FA39100FF52BF /* ViewController.m in Sources */,
+				71AB22B11B1FA39100FF52BF /* MainVC.m in Sources */,
+				71AB22EC1B27497F00FF52BF /* ImageCell.m in Sources */,
+				FE982B911B23BEC2003A7B5C /* KonamiCodeRecognizer.m in Sources */,
 				71AB22AE1B1FA39100FF52BF /* AppDelegate.m in Sources */,
+				FE982B921B23BEC2003A7B5C /* PuzzleManager.m in Sources */,
 				71AB22AB1B1FA39100FF52BF /* main.m in Sources */,
+				FE982B931B23BEC2003A7B5C /* PuzzlePieceView.m in Sources */,
+				FE982B901B23BEC2003A7B5C /* JigsawVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,6 +350,7 @@
 				71AB22B31B1FA39100FF52BF /* Base */,
 			);
 			name = Main.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		71AB22B71B1FA39100FF52BF /* LaunchScreen.xib */ = {
@@ -258,6 +359,7 @@
 				71AB22B81B1FA39100FF52BF /* Base */,
 			);
 			name = LaunchScreen.xib;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -350,6 +452,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = KiPuzzle/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -360,6 +463,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = KiPuzzle/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -418,6 +522,7 @@
 				71AB22CA1B1FA39100FF52BF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		71AB22CB1B1FA39100FF52BF /* Build configuration list for PBXNativeTarget "KiPuzzleTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +531,7 @@
 				71AB22CD1B1FA39100FF52BF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -20,10 +20,10 @@
             </objects>
             <point key="canvasLocation" x="-954" y="351"/>
         </scene>
-        <!--View Controller-->
+        <!--MainVC-->
         <scene sceneID="nwR-PV-xGm">
             <objects>
-                <viewController id="IlA-kY-nvC" sceneMemberID="viewController">
+                <viewController id="IlA-kY-nvC" customClass="MainVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Rd6-ue-nbH"/>
                         <viewControllerLayoutGuide type="bottom" id="NA3-H9-PmT"/>
@@ -31,13 +31,171 @@
                     <view key="view" contentMode="scaleToFill" id="QMR-x2-v8a">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" minValue="3" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="bD2-a0-qGg">
+                                <rect key="frame" x="14" y="540" width="156" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="152" id="EDB-ic-VQG"/>
+                                    <constraint firstAttribute="height" constant="30" id="SUE-G7-WGf"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="sliderMoved:" destination="IlA-kY-nvC" eventType="valueChanged" id="XBu-BC-unc"/>
+                                </connections>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" minValue="2" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="nIv-eW-hm4">
+                                <rect key="frame" x="427" y="540" width="150" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="146" id="0Ad-B4-FEe"/>
+                                    <constraint firstAttribute="height" constant="30" id="rcC-5D-JRT"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="sliderMoved:" destination="IlA-kY-nvC" eventType="valueChanged" id="aOr-lH-xYy"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GDA-V5-VvQ">
+                                <rect key="frame" x="176" y="544" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="hfo-Dg-Tej"/>
+                                    <constraint firstAttribute="width" constant="42" id="sPp-QU-101"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3aI-iV-fuf">
+                                <rect key="frame" x="0.0" y="64" width="600" height="443"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="2" id="wiD-rx-XiQ">
+                                    <size key="itemSize" width="295" height="191"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="40" minY="20" maxX="40" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageCell" id="8qb-zy-tee" customClass="ImageCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="295" height="191"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PZIjigsaw1.png" translatesAutoresizingMaskIntoConstraints="NO" id="tbs-lW-1Si">
+                                                    <rect key="frame" x="0.0" y="0.0" width="295" height="191"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <outlet property="image" destination="tbs-lW-1Si" id="MzR-Iu-SHL"/>
+                                            <segue destination="KsR-ie-Ga5" kind="show" identifier="ShowPuzzleSegue" id="OhW-3p-6Bg"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="IlA-kY-nvC" id="nej-wQ-gnK"/>
+                                    <outlet property="delegate" destination="IlA-kY-nvC" id="0Oz-de-D4Q"/>
+                                </connections>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Qtj-OO-vIs">
+                                <rect key="frame" x="249" y="529" width="103" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="Nvo-dG-MW3"/>
+                                    <constraint firstAttribute="width" constant="103" id="lMY-Ro-IsI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="Import Puzzle From Library"/>
+                                <connections>
+                                    <action selector="importPuzzle:" destination="IlA-kY-nvC" eventType="touchUpInside" id="sEG-Iz-qUk"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XGM-g2-rYa">
+                                <rect key="frame" x="379" y="544" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="GCg-pM-YHi"/>
+                                    <constraint firstAttribute="width" constant="42" id="dq0-aQ-ZSQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3aI-iV-fuf" firstAttribute="top" secondItem="Rd6-ue-nbH" secondAttribute="bottom" id="3iV-Jb-QZ0"/>
+                            <constraint firstItem="NA3-H9-PmT" firstAttribute="top" secondItem="bD2-a0-qGg" secondAttribute="bottom" constant="30" id="Bey-UG-dGz"/>
+                            <constraint firstAttribute="centerX" secondItem="Qtj-OO-vIs" secondAttribute="centerX" id="CHb-9e-CNI"/>
+                            <constraint firstItem="NA3-H9-PmT" firstAttribute="top" secondItem="Qtj-OO-vIs" secondAttribute="bottom" constant="20" id="DsL-s6-N0Y"/>
+                            <constraint firstItem="3aI-iV-fuf" firstAttribute="leading" secondItem="QMR-x2-v8a" secondAttribute="leading" id="ImW-nh-vsu"/>
+                            <constraint firstItem="bD2-a0-qGg" firstAttribute="leading" secondItem="QMR-x2-v8a" secondAttribute="leading" constant="16" id="Imp-At-BBk"/>
+                            <constraint firstAttribute="trailing" secondItem="nIv-eW-hm4" secondAttribute="trailing" constant="25" id="K5c-F2-2Di"/>
+                            <constraint firstItem="NA3-H9-PmT" firstAttribute="top" secondItem="XGM-g2-rYa" secondAttribute="bottom" constant="35" id="PPY-aJ-dfL"/>
+                            <constraint firstAttribute="trailing" secondItem="3aI-iV-fuf" secondAttribute="trailing" id="RNW-gQ-WoQ"/>
+                            <constraint firstItem="GDA-V5-VvQ" firstAttribute="leading" secondItem="bD2-a0-qGg" secondAttribute="trailing" constant="8" id="bMl-J3-w2Q"/>
+                            <constraint firstItem="nIv-eW-hm4" firstAttribute="leading" secondItem="XGM-g2-rYa" secondAttribute="trailing" constant="8" id="bNP-jd-fhN"/>
+                            <constraint firstItem="NA3-H9-PmT" firstAttribute="top" secondItem="GDA-V5-VvQ" secondAttribute="bottom" constant="35" id="hNR-5p-lfj"/>
+                            <constraint firstItem="NA3-H9-PmT" firstAttribute="top" secondItem="nIv-eW-hm4" secondAttribute="bottom" constant="30" id="j2K-UC-c7e"/>
+                            <constraint firstItem="Qtj-OO-vIs" firstAttribute="top" secondItem="3aI-iV-fuf" secondAttribute="bottom" constant="22" id="nQ3-IH-tZi"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="RTM-gh-CPZ"/>
+                    <connections>
+                        <outlet property="horizontalSlider" destination="nIv-eW-hm4" id="Py8-fo-quA"/>
+                        <outlet property="horzontalLabel" destination="GDA-V5-VvQ" id="16g-YA-eAt"/>
+                        <outlet property="puzzlesCollectionView" destination="3aI-iV-fuf" id="z4Z-yh-0tA"/>
+                        <outlet property="verticalLabel" destination="XGM-g2-rYa" id="3uN-ev-ujT"/>
+                        <outlet property="verticalSlider" destination="bD2-a0-qGg" id="bXF-kU-WHp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="02z-pp-vNE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-134" y="351"/>
         </scene>
+        <!--JigsawVC-->
+        <scene sceneID="j9N-FD-AtO">
+            <objects>
+                <viewController id="KsR-ie-Ga5" customClass="JigsawVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Qdr-Gd-VRs"/>
+                        <viewControllerLayoutGuide type="bottom" id="zOY-yL-zCw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RZ3-Ev-jE3">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" alpha="0.74999999999999978" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xYM-86-Bab">
+                                <rect key="frame" x="16" y="10" width="70" height="70"/>
+                                <color key="backgroundColor" red="0.46353331489999999" green="0.50521381129999998" blue="0.55249763259999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="Bba-B6-bhr"/>
+                                    <constraint firstAttribute="height" constant="70" id="PxV-wW-SJ2"/>
+                                </constraints>
+                                <state key="normal" image="backButton">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeGame:" destination="KsR-ie-Ga5" eventType="touchUpInside" id="QvL-Ob-kNr"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xYM-86-Bab" firstAttribute="leading" secondItem="RZ3-Ev-jE3" secondAttribute="leading" constant="16" id="fxa-Zx-2Iq"/>
+                            <constraint firstItem="xYM-86-Bab" firstAttribute="top" secondItem="Qdr-Gd-VRs" secondAttribute="bottom" constant="10" id="g4c-eO-fQ1"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="btnClose" destination="xYM-86-Bab" id="kaq-Kx-rIr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vEa-nr-WcN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="556" y="344"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="PZIjigsaw1.png" width="1024" height="768"/>
+        <image name="backButton" width="35" height="35"/>
+    </resources>
 </document>

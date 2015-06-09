@@ -6,13 +6,12 @@
 //  Copyright (c) 2015 aio Coan. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @protocol PuzzleManagerDelegate <NSObject>
 
 @required
 - (NSDictionary*) numberOfPiecesForPuzzle;
-- (NSArray*) imagesForPuzzle;
 - (BOOL) showHintImage;
 @end
 
@@ -24,7 +23,7 @@
 
 -(id)initWithParentVC:(UIViewController*)parentVC;
 
--(void)prepareForStart;
+-(void)prepareForStart:(UIImage*)image;
 -(void)start;
 
 @end

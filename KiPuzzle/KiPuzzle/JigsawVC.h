@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Encripta. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
+
 typedef enum : NSUInteger {
    jigsawKidMode,
    jigSawAdultMode
@@ -16,6 +18,10 @@ typedef enum : NSUInteger {
 @interface JigsawVC : UIViewController
 @property int mode;
 @property (weak, nonatomic) IBOutlet UIButton *btnClose;
+
+@property(strong,nonatomic)NSDictionary* currentImage;
+@property(strong,nonatomic)NSString* numberHorizontal;
+@property(strong,nonatomic)NSString* numberVertical;
 
 -(void)fixCloseButton;
 @end
