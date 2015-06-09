@@ -15,6 +15,7 @@
 		71AB22B91B1FA39100FF52BF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71AB22B71B1FA39100FF52BF /* LaunchScreen.xib */; };
 		71AB22C51B1FA39100FF52BF /* KiPuzzleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AB22C41B1FA39100FF52BF /* KiPuzzleTests.m */; };
 		71AB22EC1B27497F00FF52BF /* ImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AB22EB1B27497F00FF52BF /* ImageCell.m */; };
+		71AB22EF1B27B23900FF52BF /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AB22EE1B27B23900FF52BF /* HeaderView.m */; };
 		FE982B901B23BEC2003A7B5C /* JigsawVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FE982B891B23BEC2003A7B5C /* JigsawVC.m */; };
 		FE982B911B23BEC2003A7B5C /* KonamiCodeRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = FE982B8B1B23BEC2003A7B5C /* KonamiCodeRecognizer.m */; };
 		FE982B921B23BEC2003A7B5C /* PuzzleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FE982B8D1B23BEC2003A7B5C /* PuzzleManager.m */; };
@@ -52,6 +53,8 @@
 		71AB22C41B1FA39100FF52BF /* KiPuzzleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KiPuzzleTests.m; sourceTree = "<group>"; };
 		71AB22EA1B27497F00FF52BF /* ImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCell.h; sourceTree = "<group>"; };
 		71AB22EB1B27497F00FF52BF /* ImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCell.m; sourceTree = "<group>"; };
+		71AB22ED1B27B23900FF52BF /* HeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderView.h; sourceTree = "<group>"; };
+		71AB22EE1B27B23900FF52BF /* HeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderView.m; sourceTree = "<group>"; };
 		FE982B881B23BEC2003A7B5C /* JigsawVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JigsawVC.h; sourceTree = "<group>"; };
 		FE982B891B23BEC2003A7B5C /* JigsawVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JigsawVC.m; sourceTree = "<group>"; };
 		FE982B8A1B23BEC2003A7B5C /* KonamiCodeRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KonamiCodeRecognizer.h; sourceTree = "<group>"; };
@@ -107,8 +110,7 @@
 		71AB22A71B1FA39100FF52BF /* KiPuzzle */ = {
 			isa = PBXGroup;
 			children = (
-				71AB22EA1B27497F00FF52BF /* ImageCell.h */,
-				71AB22EB1B27497F00FF52BF /* ImageCell.m */,
+				71AB22F01B27B24100FF52BF /* CollectionView */,
 				71AB22E81B2748E000FF52BF /* Delegates */,
 				71AB22E91B2748F500FF52BF /* PuzzleManager */,
 				71AB22E71B2748D300FF52BF /* ViewControllers */,
@@ -176,6 +178,17 @@
 				FE982B8F1B23BEC2003A7B5C /* PuzzlePieceView.m */,
 			);
 			name = PuzzleManager;
+			sourceTree = "<group>";
+		};
+		71AB22F01B27B24100FF52BF /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				71AB22ED1B27B23900FF52BF /* HeaderView.h */,
+				71AB22EE1B27B23900FF52BF /* HeaderView.m */,
+				71AB22EA1B27497F00FF52BF /* ImageCell.h */,
+				71AB22EB1B27497F00FF52BF /* ImageCell.m */,
+			);
+			name = CollectionView;
 			sourceTree = "<group>";
 		};
 		FE982B951B23C281003A7B5C /* resources */ = {
@@ -315,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71AB22B11B1FA39100FF52BF /* MainVC.m in Sources */,
+				71AB22EF1B27B23900FF52BF /* HeaderView.m in Sources */,
 				71AB22EC1B27497F00FF52BF /* ImageCell.m in Sources */,
 				FE982B911B23BEC2003A7B5C /* KonamiCodeRecognizer.m in Sources */,
 				71AB22AE1B1FA39100FF52BF /* AppDelegate.m in Sources */,

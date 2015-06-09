@@ -9,6 +9,7 @@
 #import "MainVC.h"
 
 #import "ImageCell.h"
+#import "HeaderView.h"
 #import "JigsawVC.h"
 
 static NSString* const kSegueIdShowPuzzle = @"ShowPuzzleSegue";
@@ -70,28 +71,54 @@ static NSString* const kPuzzleImageFormatSuffix = @".png";
     [newPuzzle drawInRect:CGRectMake(0, 0, size.width, size.height)];
     newPuzzle = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    [imageFiles addObject:@{@"MediaName":@"NewPuzzle",@"Image":newPuzzle}];
+    [self saveToCustomPuzzlesDirectory:newPuzzle];
+    //[imageFiles addObject:@{@"MediaName":@"NewPuzzle",@"Image":newPuzzle}];
     [picker dismissViewControllerAnimated:YES completion:^(void){
         [puzzlesCollectionView reloadData];
     }];
+}
+
+- (void)saveToCustomPuzzlesDirectory:(UIImage*)image
+{
+    NSString* docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSFileManager* fm = [NSFileManager defaultManager];
+    NSString* customPuzzlesDir = [docPath stringByAppendingPathComponent:@"customPuzzles"];
+    NSString* puzzleName = [[NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970] * 1000] stringByReplacingOccurrencesOfString:@"." withString:@""];
+    puzzleName = [puzzleName stringByAppendingString:[NSString stringWithFormat:kPuzzleImageFormatSuffix]];
+    puzzleName = [kPuzzleImagePrefix stringByAppendingString:puzzleName];
+    NSString* puzzlePath = [customPuzzlesDir stringByAppendingPathComponent:puzzleName];
+    BOOL isDir = YES;
+    if(![fm fileExistsAtPath:customPuzzlesDir isDirectory:&isDir])
+    {
+        [fm createDirectoryAtPath:customPuzzlesDir withIntermediateDirectories:nil attributes:nil error:nil];
+    }
+    if(![fm fileExistsAtPath:puzzlePath])
+    {
+        NSData* data = UIImagePNGRepresentation(image);
+        if([data writeToFile:puzzlePath atomically:YES])
+            NSLog(@"Puzzle Saved Locally");
+        else
+            NSLog(@"Failed to save puzzle");
+    }
 }
 
 #pragma mark - UICollectionView
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return 1;
+    [self fillImageNames];
+    return [imageFiles count];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [[self imageFiles]count];
+    return [[self imageFiles][section] count];
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     ImageCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:kImageCellIdentifier forIndexPath:indexPath];
-    cell.image.image = imageFiles[indexPath.row][@"Image"];
+    cell.image.image = imageFiles[indexPath.section][indexPath.row][@"Image"];
     [cell.image.layer setBorderColor:[UIColor blackColor].CGColor];
     [cell.image.layer setBorderWidth:2.0];
     return cell;
@@ -109,6 +136,26 @@ static NSString* const kPuzzleImageFormatSuffix = @".png";
     return displayString;
 }
 
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionReusableView* view = nil;
+    if(kind == UICollectionElementKindSectionHeader)
+    {
+        HeaderView* headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
+        NSString* title = nil;
+        if (indexPath.section == 0)
+            title = @"Default Puzzles";
+        else if(indexPath.section == 1)
+            title = @"Custom Puzzles";
+        else
+            title = @"This shouldn't happen";
+        headerView.title.text = title;
+        view = headerView;
+    }
+    return view;
+}
+
+
 #pragma mark - Data
 
 - (void)fillImageNames {
@@ -116,6 +163,8 @@ static NSString* const kPuzzleImageFormatSuffix = @".png";
     NSString* bundlePath = [[NSBundle mainBundle] bundlePath];
     NSError* error = nil;
     imageFiles = [NSMutableArray array];
+    NSMutableArray* defaultImages = [NSMutableArray new];
+    NSMutableArray* customPuzzles = [NSMutableArray new];
     NSArray* contents = [fileManager contentsOfDirectoryAtPath:bundlePath error:&error];
     if (error.code != noErr) {
         NSLog(@"Error loading bundle path: %@",[error localizedDescription]);
@@ -125,10 +174,23 @@ static NSString* const kPuzzleImageFormatSuffix = @".png";
             NSRange prefixRange = [fileString rangeOfString:kPuzzleImagePrefix];
             NSRange suffixRange = [fileString rangeOfString:kPuzzleImageFormatSuffix];
             if (prefixRange.location != NSNotFound && suffixRange.location != NSNotFound) {
-                [imageFiles addObject:@{@"ImageName":fileString,@"Image":[UIImage imageNamed:fileString]}];
+                [defaultImages addObject:@{@"ImageName":fileString,@"Image":[UIImage imageNamed:fileString]}];
             }
         }
     }
+    NSString* customPuzzlesPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)lastObject];
+    customPuzzlesPath = [customPuzzlesPath stringByAppendingPathComponent:@"customPuzzles/"];
+    contents = [fileManager contentsOfDirectoryAtPath:customPuzzlesPath error:&error];
+    for (NSString* fileString in contents) {
+        NSRange prefixRange = [fileString rangeOfString:kPuzzleImagePrefix];
+        NSRange suffixRange = [fileString rangeOfString:kPuzzleImageFormatSuffix];
+        if (prefixRange.location != NSNotFound && suffixRange.location != NSNotFound) {
+            UIImage* image = [[UIImage alloc]initWithData:[NSData dataWithContentsOfFile:[customPuzzlesPath stringByAppendingPathComponent:fileString]]];
+            [customPuzzles addObject:@{@"ImageName":fileString,@"Image":image}];
+        }
+    }
+    [imageFiles addObject:defaultImages];
+    [imageFiles addObject:customPuzzles];
 }
 
 #pragma mark - Navigation
@@ -138,7 +200,7 @@ static NSString* const kPuzzleImageFormatSuffix = @".png";
         ImageCell* cell = (ImageCell*)sender;
         NSIndexPath* path = [puzzlesCollectionView indexPathForCell:cell];
         JigsawVC* destination = segue.destinationViewController;
-        destination.currentImage = imageFiles[path.row];
+        destination.currentImage = imageFiles[path.section][path.row];
         NSInteger horizontal = horizontalSlider.value;
         destination.numberHorizontal = [NSString stringWithFormat:@"%ld", horizontal];
         NSInteger vertical = verticalSlider.value;
